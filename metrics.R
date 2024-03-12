@@ -20,12 +20,8 @@ data2 <- df %>%
   pivot_longer(fail:successful, names_to = "model", values_to = "y")
 
 ggplot(data2, aes(x/r, y, color = model, shape = model)) +
-  #geom_point(size = 3) +    # increased size for increased visibility
-  #geom_smooth(method = "auto", se = FALSE)+
   geom_abline(intercept = p, slope = 0, color = "darkred")+
   geom_abline(intercept = q, slope = 0, color = "orange")+
-  geom_abline(intercept = 461, slope = 0, color = "blue")+
-  geom_abline(intercept = 60, slope = 0, color = "darkred")+
   geom_vline(xintercept  = 0.666, color = "blue")+
   geom_line()+
   labs(x='Trust threshold',y='Transactions',color='According to model')+
@@ -69,10 +65,6 @@ data2 <- df %>%
   pivot_longer(precision:f1, names_to = "group", values_to = "y")
 
 ggplot(data2, aes(x/r, y, color = group, shape = group)) +
-  #geom_point(size = 3) +    # increased size for increased visibility
-  #geom_smooth(method = "auto", se = FALSE)+
-  geom_abline(intercept = p, slope = 0, color = "darkred")+
-  geom_abline(intercept = q, slope = 0, color = "orange")+
   geom_abline(intercept = 0.821, slope = 0, color = "blue")+
   geom_vline(xintercept  = 0.666, color = "blue")+
   geom_line()+
@@ -104,12 +96,8 @@ data2 <- df %>%
   pivot_longer(fail:successful, names_to = "metric", values_to = "y")
 
 ggplot(data2, aes(x/r, y, color = metric, shape = metric)) +
-  #geom_point(size = 3) +    # increased size for increased visibility
-  #geom_smooth(method = "auto", se = FALSE)+
   geom_abline(intercept = p, slope = 0, color = "darkred")+
   geom_abline(intercept = q, slope = 0, color = "orange")+
-  geom_abline(intercept = 79, slope = 0, color = "blue")+
-  geom_abline(intercept = 11, slope = 0, color = "darkred")+
   geom_vline(xintercept  = 0.607, color = "blue")+
   geom_line()+
   labs(x='Trust threshold',y='transactions',color='According to model')+
@@ -146,10 +134,6 @@ data2 <- df %>%
   pivot_longer(precision:f1, names_to = "metric", values_to = "y")
 
 ggplot(data2, aes(x/r, y, color = metric, shape = metric)) +
-  #geom_point(size = 3) +    # increased size for increased visibility
-  #geom_smooth(method = "auto", se = FALSE)+
-  geom_abline(intercept = p, slope = 0, color = "red")+
-  geom_abline(intercept = q, slope = 0, color = "green")+
   geom_abline(intercept = 0.965, slope = 0, color = "blue")+
   geom_vline(xintercept  = 0.607, color = "blue")+
   geom_line()+
@@ -184,8 +168,6 @@ data2 <- df %>%
   pivot_longer(buyer:seller, names_to = "players", values_to = "y")
 
 ggplot(data2, aes(x, y, color = players, shape = players)) +
-  #geom_point(size = 3) +    # increased size for increased visibility
-  #geom_smooth(method = "auto", se = FALSE)+
   geom_abline(intercept = q, slope = 0, color = "orange")+
   geom_vline(xintercept  = 0.5, color = "blue")+
   geom_line()  +
@@ -216,19 +198,13 @@ dbWriteTable(mydb, "fail_deposit", fail)
 dbWriteTable(mydb, "successful_deposit", successful)
 
 df <- data.frame(x,fail,successful)
-#((2*x/(2*x-1))*y1
-#((2*x)/(2*x-1))
-#(x/r)*0.5+0.5
+
 data2 <- df %>%
   pivot_longer(fail:successful, names_to = "players", values_to = "y")
 
 ggplot(data2, aes(x, y, color = players, shape = players)) +
-  #geom_point(size = 3) +    # increased size for increased visibility
-  #geom_smooth(method = "auto", se = FALSE)+
   geom_abline(intercept = p, slope = 0, color = "darkred")+
   geom_abline(intercept = q, slope = 0, color = "orange")+
-  geom_abline(intercept = 445, slope = 0, color = "blue")+
-  geom_abline(intercept = 60, slope = 0, color = "darkred")+
   geom_vline(xintercept  = 0.663, color = "blue")+
   geom_line()  +
   labs(x='Trust threshold',  
@@ -266,10 +242,6 @@ data2 <- df %>%
   pivot_longer(precision:f1, names_to = "metric", values_to = "y")
 
 ggplot(data2, aes(x, y, color = metric, shape = metric)) +
-  #geom_point(size = 3) +    # increased size for increased visibility
-  #geom_smooth(method = "auto", se = FALSE)+
-  geom_abline(intercept = p, slope = 0, color = "red")+
-  geom_abline(intercept = q, slope = 0, color = "green")+
   geom_abline(intercept = 0.819, slope = 0, color = "blue")+
   geom_vline(xintercept  = 0.663, color = "blue")+
   geom_line()+
@@ -289,49 +261,3 @@ ggplot(data2, aes(x, y, color = metric, shape = metric)) +
         legend.position = "bottom",
         panel.border=element_blank())+
   scale_y_continuous(breaks = seq(0, 1, by = 0.2),limits=c(0, 1))
-
-
-
-
-
-
-
-
-
-dbWriteTable(mydb, "fail_deposit", fail)
-dbWriteTable(mydb, "successful_deposit", successful)
-
-
-df <- data.frame(x,fail,successful)
-#((2*x/(2*x-1))*y1
-#((2*x)/(2*x-1))
-#(x/r)*0.5+0.5
-data2 <- df %>%
-  pivot_longer(fail:successful, names_to = "players", values_to = "y")
-
-ggplot(data2, aes(x, y, color = players, shape = players)) +
-  #geom_point(size = 3) +    # increased size for increased visibility
-  #geom_smooth(method = "auto", se = FALSE)+
-  geom_abline(intercept = p, slope = 0, color = "darkred")+
-  geom_abline(intercept = q, slope = 0, color = "orange")+
-  geom_line()  +
-  labs(x='Trust threshold',  
-       y="Transactions",color='According to model') +
-  theme_classic()+
-  theme(plot.title = element_text(face="bold",size = "19"),
-        plot.subtitle = element_text(size = "14"),
-        plot.caption = element_text(size="14"),
-        axis.title.y = element_text(size="16"),
-        axis.title.x = element_text(size="16"),
-        axis.text.x = element_text(size="14"),
-        axis.text.y = element_text(size="16"),
-        panel.grid.minor = element_blank(),
-        panel.grid.major = element_blank(),
-        legend.title = element_text(size="16"),
-        legend.text = element_text(size="14"),
-        legend.position = "bottom",
-        panel.border=element_blank())+
-  scale_y_continuous(breaks = seq(0, q, by = 500.00),limits=c(0, q))
-
-
-
